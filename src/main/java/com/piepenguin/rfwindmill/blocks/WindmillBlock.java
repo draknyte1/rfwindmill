@@ -1,14 +1,8 @@
 package com.piepenguin.rfwindmill.blocks;
 
-import com.google.common.base.Preconditions;
-import com.piepenguin.rfwindmill.items.ModItems;
-import com.piepenguin.rfwindmill.items.RFWItem;
-import com.piepenguin.rfwindmill.lib.*;
-import com.piepenguin.rfwindmill.tileentities.TileEntityRotorBlock;
-import com.piepenguin.rfwindmill.tileentities.TileEntityWindmillBlock;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -26,8 +20,21 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.piepenguin.rfwindmill.creative.RfWindmillTab;
+import com.piepenguin.rfwindmill.items.ModItems;
+import com.piepenguin.rfwindmill.items.RFWItem;
+import com.piepenguin.rfwindmill.lib.Constants;
+import com.piepenguin.rfwindmill.lib.EnergyStorage;
+import com.piepenguin.rfwindmill.lib.Lang;
+import com.piepenguin.rfwindmill.lib.ModConfiguration;
+import com.piepenguin.rfwindmill.lib.Util;
+import com.piepenguin.rfwindmill.tileentities.TileEntityRotorBlock;
+import com.piepenguin.rfwindmill.tileentities.TileEntityWindmillBlock;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The main structural block of a windmill, handles creation of the
@@ -63,7 +70,7 @@ public class WindmillBlock extends Block implements ITileEntityProvider {
         capacity = pCapacity;
         name = pName;
         this.setBlockName(Constants.MODID + "_" + name);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(RfWindmillTab.tabMisc);
         GameRegistry.registerBlock(this, ItemBlockWindmillBlock.class, name);
         icons = new IIcon[maxMeta];
     }
