@@ -1,11 +1,11 @@
 package com.piepenguin.rfwindmill.lib;
 
-import buildcraft.api.tools.IToolWrench;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModAPIManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
+import buildcraft.api.tools.IToolWrench;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ModAPIManager;
 
 /**
  * Various useful functions that are used throughout the codebase.
@@ -93,6 +93,15 @@ public class Util {
      */
     public static boolean useThermalFoundation() {
         return Loader.isModLoaded(Constants.THERMAL_FOUNDATION_MOD_ID) && !ModConfiguration.useVanillaRecipes();
+    }
+    
+    /**
+     * Checks if Gregtech features should be used
+     * @return {@code true} if Gregtech is loaded and the recipes
+     * aren't disabled, and {@code false} otherwise
+     */
+    public static boolean useGregtech() {
+        return Loader.isModLoaded(Constants.GREGTECH5_MOD_ID) && !ModConfiguration.useVanillaRecipes();
     }
 
     /**

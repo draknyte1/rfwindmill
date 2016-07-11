@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.7c"
+version = "0.0.1-Custom"
 group= "com.piepenguin.rfwindmill" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "rfwindmill"
 
@@ -40,6 +40,19 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+    manifest {
+        //attributes 'FMLCorePlugin': 'WhateverLoaderClass'
+        //attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
+artifacts {
+    archives devJar
 }
 
 processResources

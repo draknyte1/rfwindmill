@@ -1,13 +1,5 @@
 package com.piepenguin.rfwindmill.blocks;
 
-import com.piepenguin.rfwindmill.lib.Constants;
-import com.piepenguin.rfwindmill.lib.ModConfiguration;
-import com.piepenguin.rfwindmill.lib.Util;
-import com.piepenguin.rfwindmill.tileentities.TileEntityRotorBlock;
-import com.piepenguin.rfwindmill.tileentities.TileEntityWindmillBlock;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -20,6 +12,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import com.piepenguin.rfwindmill.lib.Constants;
+import com.piepenguin.rfwindmill.lib.Util;
+import com.piepenguin.rfwindmill.tileentities.TileEntityRotorBlock;
+import com.piepenguin.rfwindmill.tileentities.TileEntityWindmillBlock;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Rotor blocks are created when a {@link WindmillBlock} is right clicked with
@@ -47,11 +48,44 @@ public class RotorBlock extends BlockContainer {
             case 0:
                 return "rotorIron";
             case 1:
-                return (Util.useThermalFoundation() ? "rotorElectrum" : "rotorGold");
+            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorGold";
+            	}
+            	else if (Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorElectrum";
+            	}
+            	else if (Util.useGregtech()){
+            		return "rotorElectrum";
+            	}   
+            	else {
+            		return "rotorGold";
+            	}
             case 2:
-                return (Util.useThermalFoundation() ? "rotorSignalum" : "rotorNether");
+            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorNether";
+            	}
+            	else if (Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorSignalum";
+            	}
+            	else if (Util.useGregtech()){
+            		return "rotorTitanium";
+            	}   
+            	else {
+            		return "rotorNether";
+            	}
             case 3:
-                return (Util.useThermalFoundation() ? "rotorEnderium" : "rotorDiamond");
+            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorDiamond";
+            	}
+            	else if (Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorEnderium";
+            	}
+            	else if (Util.useGregtech()){
+            		return "rotorEnderium";
+            	}   
+            	else {
+            		return "rotorDiamond";
+            	}
         }
     }
     @Override
