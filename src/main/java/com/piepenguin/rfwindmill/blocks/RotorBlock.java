@@ -14,6 +14,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.piepenguin.rfwindmill.lib.Constants;
+import com.piepenguin.rfwindmill.lib.ModConfiguration;
 import com.piepenguin.rfwindmill.lib.Util;
 import com.piepenguin.rfwindmill.tileentities.TileEntityRotorBlock;
 import com.piepenguin.rfwindmill.tileentities.TileEntityWindmillBlock;
@@ -46,9 +47,20 @@ public class RotorBlock extends BlockContainer {
         switch(pRotorType) {
             default:
             case 0:
-                return "rotorIron";
+            	if (!Util.useThermalFoundation() && !Util.useGregtech() || ModConfiguration.useVanillaRecipes()){
+            		return "rotorIron";
+            	}
+            	else if (Util.useThermalFoundation() && !Util.useGregtech()){
+            		return "rotorIron";
+            	}
+            	else if (Util.useGregtech()){
+            		return "rotorIron";
+            	}   
+            	else {
+            		return "rotorIron";
+            	}
             case 1:
-            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            	if (!Util.useThermalFoundation() && !Util.useGregtech() || ModConfiguration.useVanillaRecipes()){
             		return "rotorGold";
             	}
             	else if (Util.useThermalFoundation() && !Util.useGregtech()){
@@ -61,7 +73,7 @@ public class RotorBlock extends BlockContainer {
             		return "rotorGold";
             	}
             case 2:
-            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            	if (!Util.useThermalFoundation() && !Util.useGregtech() || ModConfiguration.useVanillaRecipes()){
             		return "rotorNether";
             	}
             	else if (Util.useThermalFoundation() && !Util.useGregtech()){
@@ -74,7 +86,7 @@ public class RotorBlock extends BlockContainer {
             		return "rotorNether";
             	}
             case 3:
-            	if (!Util.useThermalFoundation() && !Util.useGregtech()){
+            	if (!Util.useThermalFoundation() && !Util.useGregtech() || ModConfiguration.useVanillaRecipes()){
             		return "rotorDiamond";
             	}
             	else if (Util.useThermalFoundation() && !Util.useGregtech()){
