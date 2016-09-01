@@ -109,7 +109,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.rotor3, "s  ", "ses", "  s", 's', "ingotSignalum", 'e', "ingotElectrum"));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.rotor4, "e  ", "eie", "  e", 'e', "ingotEnderium", 'i', "ingotInvar"));
 	}
-	
+
 	/**
 	 * Register Thermal Expansion turbine recipes.
 	 */
@@ -152,23 +152,22 @@ public class ModRecipes {
 	 */
 	private static void registerGregtechTurbines() {
 		ItemStack powerCoilSilver = Preconditions.checkNotNull(getMetaStack("IC2:itemRecipePart", 0, 1));
-		ItemStack machineFrameBasic = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 10, 1));
-		ItemStack machineFrameHardened = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 11, 1));
-		ItemStack machineFrameReinforced = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 12, 1));
-		ItemStack machineFrameResonant = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 13, 1));
-		ItemStack hardenedGlass = Preconditions.checkNotNull(getMetaStack("IC2:blockAlloyGlass", 0, 1));
+		ItemStack machineFrameULV = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 10, 1));
+		ItemStack machineFrameLV = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 11, 1));
+		ItemStack machineFrameMV = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 12, 1));
+		ItemStack machineFrameHV = Preconditions.checkNotNull(getMetaStack("gregtech:gt.blockmachines", 13, 1));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 0), " x ", "imi", " c ", 'x', "dustRedstone", 'i', "plateTin", 'm', machineFrameBasic, 'c', powerCoilSilver));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 1), " x ", "imi", " c ", 'x', "dustRedstone", 'i', "plateInvar", 'm', machineFrameHardened, 'c', powerCoilSilver));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 2), " x ", "imi", " c ", 'x', "dustRedstone", 'i', "plateSilver", 'm', machineFrameReinforced, 'c', powerCoilSilver));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 3), " x ", "imi", " c ", 'x', "dustRedstone", 'i', "platePlatinum", 'm', machineFrameResonant, 'c', powerCoilSilver));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 0), "xxx", "imi", "c c", 'x', "plateRedstone", 'i', "plateSteel", 'm', machineFrameULV, 'c', powerCoilSilver));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 1), "xxx", "imi", "c c", 'x', "plateRedstone", 'i', "plateInvar", 'm', machineFrameLV, 'c', powerCoilSilver));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 2), "xxx", "imi", "c c", 'x', "plateRedstone", 'i', "plateElectrum", 'm', machineFrameMV, 'c', powerCoilSilver));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 3), "xxx", "imi", "c c", 'x', "plateRedstone", 'i', "platePlatinum", 'm', machineFrameHV, 'c', powerCoilSilver));
 
 		// Add upgrade recipes
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 1), "igi", "jmj", "i i", 'i', "plateInvar", 'j', "plateInvar", 'g', "gearElectrum", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 0)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 2), "igi", "jmj", "i i", 'i', hardenedGlass, 'j', "plateSilver", 'g', "gearTitanium", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 1)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 3), "igi", "jmj", "i i", 'i', "plateSilver", 'j', "platePlatinum", 'g', "gearEnderium", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 2)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 1), "igi", "jmj", "i i", 'i', "plateInvar", 'j', "plateInvar", 'g', "frameGtElectrum", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 0)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 2), "igi", "jmj", "i i", 'i', "glassReinforced", 'j', "plateSilver", 'g', "frameGtTitanium", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 1)));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.windmillBlock, 1, 3), "igi", "jmj", "i i", 'i', "plateSilver", 'j', "platePlatinum", 'g', "frameGtEnderium", 'm', new ItemStack(ModBlocks.windmillBlock, 1, 2)));
 	}
-	
+
 
 	/**
 	 * Attempt to find the {@code pOre} in the Forge ore dictionary and return
@@ -183,18 +182,18 @@ public class ModRecipes {
 		}
 		return pOre;
 	}
-	
+
 	public static ItemStack getMetaStack(String FQRN, int meta, int itemstackSize){		
 		try {			
 			String[] fqrnSplit = FQRN.split(":");
 			Item em =  GameRegistry.findItem(fqrnSplit[0], fqrnSplit[1]);	
 			if (em != null){
-					ItemStack metaStack = new ItemStack(em,itemstackSize,meta);
-					return metaStack;
+				ItemStack metaStack = new ItemStack(em,itemstackSize,meta);
+				return metaStack;
 			}
 			return null;
 		} catch (NullPointerException e) {
 			return null;
 		}		
-}
+	}
 }
